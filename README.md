@@ -11,7 +11,7 @@ Download zip file<br>
 or<br>
 run git clone command in empty folder
 ```bash
-git clone https://github.com/dehemi2001/django_realtime_chat.git . && rm -rf .git
+git clone https://github.com/dehemi2001/realtime_chat_django.git
 ```
 <br><br>
 
