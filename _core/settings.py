@@ -30,8 +30,7 @@ DEBUG = os.getenv("DEBUG") == "True"
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://realtimechat.ydns.eu',
-    'http://realtimechat.ydns.eu',
+    'https://realtimechat.dynv6.net',
 ]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
