@@ -1,0 +1,28 @@
+name: Deploy to Oracle Cloud
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            cd /home/ubuntu/realtime_chat_django
+            git fetch origin main
+            git reset --hard origin/main
+            source venv/bin/activate
+            pip install -r requirements.txt
+            python manage.py collectstatic --noinput
+            python manage.py migrate --noinput
+            sudo systemctl restart daphne_chat
+            sudo systemctl reload nginx
