@@ -7,3 +7,4 @@ db.sqlite3
 staticfiles/
 .vscode
 deployments.txt
+.kilo
